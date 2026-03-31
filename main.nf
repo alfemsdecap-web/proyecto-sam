@@ -14,7 +14,9 @@ process analyze_sam {
 
     script:
     """
-    uv run --directory ${projectDir} python ${projectDir}/main.py ${sam} > output.txt
+    SAM_ABS=\$(readlink -f ${sam})
+    uv run --directory ${projectDir} python ${projectDir}/main.py \$SAM_ABS > output.txt
+
     """
 }
 
