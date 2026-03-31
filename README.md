@@ -13,7 +13,7 @@ Script en Python para analizar ficheros SAM: cuenta el total de lecturas alinead
 Clona el repositorio e instala las dependencias con `uv`:
 
 ```bash
-git clone https://github.com/<tu-usuario>/proyecto-sam.git
+git clone https://github.com/alfemsdecap-web/proyecto-sam.git
 cd proyecto-sam
 uv sync
 ```
