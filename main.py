@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 
 import sys
+from rich.console import Console
+from rich.panel import Panel
+from rich.text import Text
 
 
 def analyze_sam(sam_path: str) -> tuple[int, int, float]:
@@ -35,9 +38,17 @@ def main():
     sam_path = sys.argv[1]
     total, mapq60, pct = analyze_sam(sam_path)
 
-    print(f"Total de lecturas alineadas: {total}")
-    print(f"Lecturas con MAPQ = 60: {mapq60}")
-    print(f"Porcentaje: {pct:.1f}%")
+    console = Console()
+
+    result = Text()
+    result.append("Total de lecturas alineadas: ", style="bold white")
+    result.append(f"{total}\n", style="green")
+    result.append("Lecturas con MAPQ = 60:      ", style="bold white")
+    result.append(f"{mapq60}\n", style="cyan")
+    result.append("Porcentaje:                  ", style="bold white")
+    result.append(f"{pct:.1f}%", style="yellow bold")
+
+    console.print(Panel(result, title="[bold blue]Análisis SAM[/bold blue]", border_style="blue"))
 
 
 if __name__ == "__main__":
