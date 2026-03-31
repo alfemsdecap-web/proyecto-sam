@@ -20,9 +20,9 @@ Salida esperada:
 
 ```
 ╭──────────── Análisis SAM ────────────╮
-│ Total de lecturas alineadas:  153284  │
-│ Lecturas con MAPQ = 60:        81234  │
-│ Porcentaje:                    53.0%  │
+│ Total de lecturas alineadas: 545606   │
+│ Lecturas con MAPQ = 60:      294603   │
+│ Porcentaje:                  54.0%    │
 ╰───────────────────────────────────────╯
 ```
 
