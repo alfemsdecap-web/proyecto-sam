@@ -1,0 +1,9 @@
+[project]
+name = "proyecto-sam"
+version = "0.1.0"
+description = "Análisis de ficheros SAM: conteo de lecturas alineadas y MAPQ"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "rich>=13.7.0",
+]
