@@ -50,14 +50,12 @@ proyecto-sam/
 
 ## 4. Uso de Git
 
-El proyecto se ha gestionado con Git y publicado en GitHub. Se han hecho varios commits a lo largo del desarrollo, cada uno marcando un punto de avance concreto:
+El proyecto en primera instancia se ha creado en uns servidor própio (copiando el WT.sam). Se ha gestionado con Git y publicado en GitHub: https://github.com/alfemsdecap-web/proyecto-sam
 
-- **Primer commit**: estructura básica del proyecto tras `uv init`, con el `pyproject.toml` y un `main.py` inicial que ya leía el SAM e imprimía los resultados por pantalla.
-- **Segundo commit**: integración de `rich` para mejorar el formato de salida, tras ejecutar `uv add rich`.
-- **Tercer commit**: creación del fichero `main.nf` con el pipeline de Nextflow.
-- **Cuarto commit**: `README.md` con instrucciones de uso e instalación.
 
-Git ha sido útil sobre todo para tener un historial claro de cambios. Si algo dejaba de funcionar al añadir una nueva parte, era fácil consultar qué había cambiado y volver a una versión anterior. También ha permitido publicar el código en GitHub de forma organizada, con todos los ficheros necesarios en el repositorio.
+Se han hecho varios commits y se ha clonado el proyecto en el servidor Salvia.
+
+
 
 ## 5. Entorno: gestión con uv
 
@@ -84,6 +82,4 @@ Esto instala exactamente las versiones de las dependencias definidas en el proye
 
 ## 6. Problemas encontrados
 
-**Índice de la columna MAPQ.** El formato SAM describe MAPQ como la columna 5, pero al dividir la línea en Python con `split("\t")`, la indexación empieza en 0. Por tanto, la columna 5 del SAM es el elemento en la posición 4 de la lista. Es un detalle pequeño pero que genera un error de resultado difícil de detectar si no se revisa el formato SAM con cuidado.
-
-**Salida de `rich` en Nextflow.** Al redirigir la salida del script hacia un fichero (`> output.txt`), los caracteres de color de `rich` podrían aparecer como secuencias de escape ANSI en el fichero de texto. Afortunadamente, `rich` detecta automáticamente si está escribiendo a un terminal o a un fichero, y en el segundo caso suprime los colores. El fichero `output.txt` resultante es texto limpio y legible.
+**Ejecución del pipeline Nextflow en el servidor local.** El pipeline `main.nf` no se ha podido ejecutar en el servidor de desarrollo (AWS) porque Nextflow estaba instalado sin permisos de ejecución para el usuario. El error obtenido era `Permission denied` al intentar llamar al binario. La solución fue ejecutar el pipeline directamente en el servidor Salvia, donde Nextflow está correctamente instalado en el entorno conda del curso (`conda activate /data/classes/csic_bioinf01/users/andrese/software/miniconda3`). Allí el pipeline funcionó sin problemas.
